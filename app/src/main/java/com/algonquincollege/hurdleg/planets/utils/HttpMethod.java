@@ -1,4 +1,4 @@
-package com.algonquincollege.hurdleg.planets.util;
+package com.algonquincollege.hurdleg.planets.utils;
 
 /**
  * HTTP Methods: GET, POST, PUT, and DELETE

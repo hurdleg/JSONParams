@@ -1,4 +1,4 @@
-package com.algonquincollege.hurdleg.planets.util;
+package com.algonquincollege.hurdleg.planets.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

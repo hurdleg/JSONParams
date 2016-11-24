@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 import com.algonquincollege.hurdleg.planets.model.Planet;
 import com.algonquincollege.hurdleg.planets.parsers.PlanetJSONParser;
-import com.algonquincollege.hurdleg.planets.util.HttpManager;
-import com.algonquincollege.hurdleg.planets.util.HttpMethod;
-import com.algonquincollege.hurdleg.planets.util.RequestPackage;
+import com.algonquincollege.hurdleg.planets.utils.HttpManager;
+import com.algonquincollege.hurdleg.planets.utils.HttpMethod;
+import com.algonquincollege.hurdleg.planets.utils.RequestPackage;
 
 import java.util.ArrayList;
 import java.util.List;

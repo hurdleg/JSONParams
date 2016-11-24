@@ -1,4 +1,4 @@
-package com.algonquincollege.hurdleg.planets.util;
+package com.algonquincollege.hurdleg.planets.utils;
 
 import org.json.JSONObject;
 
