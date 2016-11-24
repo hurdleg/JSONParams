@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Planets</string>
+    <string name="get_data">Get data</string>
+    <string name="planet_name_placeholder">Planet name</string>
+</resources>
