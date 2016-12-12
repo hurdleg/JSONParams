@@ -108,7 +108,7 @@ public class MainActivity extends ListActivity {
         planet.setOverview( "I miss Pluto!" );
         planet.setImage( "images/neptune.png" );
         planet.setDescription( "Pluto was stripped of planet status :(" );
-        planet.setDistanceFromSun( 3.67f );
+        planet.setDistanceFromSun( 39.5f );
         planet.setNumberOfMoons( 0 );
 
         RequestPackage pkg = new RequestPackage();
@@ -150,7 +150,7 @@ public class MainActivity extends ListActivity {
         planet.setOverview( "hurdleg" );
         planet.setImage( "images/neptune.png" );
         planet.setDescription( "hurdleg" );
-        planet.setDistanceFromSun( 0f );
+        planet.setDistanceFromSun( 39.5f );
         planet.setNumberOfMoons( 0 );
 
         RequestPackage pkg = new RequestPackage();
