@@ -23,8 +23,7 @@ public class PlanetJSONParser {
     public static List<Planet> parseFeed(String content) {
 
         try {
-            JSONObject jsonResponse = new JSONObject(content);
-            JSONArray planetArray = jsonResponse.getJSONArray("planets");
+            JSONArray planetArray = new JSONArray(content);
             List<Planet> planetList = new ArrayList<>();
 
             for (int i = 0; i < planetArray.length(); i++) {
