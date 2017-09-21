@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Parse a JSON object for a Planet.
  *
- * //TODO: compare this parser to JSON array: https://planets-hurdleg.mybluemix.net/planets
+ * //TODO: compare this parser to JSON array: https://planets.mybluemix.net/planets
  *
  * @author Gerald.Hurdle@AlgonquinCollege.com
  *

@@ -6,9 +6,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -19,6 +21,8 @@ import com.algonquincollege.hurdleg.planets.utils.HttpMethod;
 import com.algonquincollege.hurdleg.planets.utils.RequestPackage;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,15 +41,17 @@ import java.util.List;
 public class MainActivity extends ListActivity {
 
     private static final Boolean LOCALHOST = false;
-    private static final String REST_URI;
+    private static final String  REST_URI;
 
     private ProgressBar pb;
     private List<GetTask> tasks;
 
     private List<Planet> planetList;
 
+    private MenuItem mSorByDistance;
+
     static {
-        REST_URI = LOCALHOST ? "http://10.0.2.2:3000/planets" : "https://planets-hurdleg.mybluemix.net/planets";
+        REST_URI = LOCALHOST ? "http://10.0.2.2:3000/planets" : "https://planets.mybluemix.net/planets";
     }
 
     @Override
@@ -62,6 +68,8 @@ public class MainActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
+        mSorByDistance = (MenuItem) menu.findItem( R.id.action_sort_distance_asc );
         return true;
     }
 
@@ -70,6 +78,7 @@ public class MainActivity extends ListActivity {
         if (item.getItemId() == R.id.action_get_data) {
             if (isOnline()) {
                 getPlanets( REST_URI );
+                mSorByDistance.setChecked( true );
             } else {
                 Toast.makeText(this, "Network isn't available", Toast.LENGTH_LONG).show();
             }
@@ -98,7 +107,69 @@ public class MainActivity extends ListActivity {
                 Toast.makeText(this, "Network isn't available", Toast.LENGTH_LONG).show();
             }
         }
-        return false;
+
+        if ( item.isCheckable() ) {
+            // leave if the list is null
+            if ( planetList == null ) {
+                return true;
+            }
+
+            // which sort menu item did the user pick?
+            switch( item.getItemId() ) {
+                case R.id.action_sort_distance_asc:
+                    Collections.sort(planetList, new Comparator<Planet>() {
+                        @Override
+                        public int compare(Planet lhs, Planet rhs) {
+                            Log.i( "PLANETS", "Sorting planets by distance-from-sun (ASC)");
+                            return Double.compare(lhs.getDistanceFromSun(), rhs.getDistanceFromSun());
+                        }
+                    });
+                    break;
+
+                case R.id.action_sort_name_asc:
+                    Collections.sort(planetList, new Comparator<Planet>() {
+                        @Override
+                        public int compare(Planet lhs, Planet rhs) {
+                            Log.i( "PLANETS", "Sorting planets by name (a-z)");
+//                            return lhs.getName().compareTo(rhs.getName());            //  LAB
+                            return lhs.getName().compareToIgnoreCase(rhs.getName());    // FINAL QUIZ
+                        }
+                    });
+                    break;
+
+                case R.id.action_sort_name_dsc:
+                    Collections.sort(planetList, Collections.reverseOrder(new Comparator<Planet>() {
+                        @Override
+                        public int compare(Planet lhs, Planet rhs) {
+                            Log.i( "PLANETS", "Sorting planets by name (z-a)");
+//                            return lhs.getName().compareTo(rhs.getName());            // LAB
+                            return lhs.getName().compareToIgnoreCase(rhs.getName());    // FINAL QUIZ
+                        }
+                    }));
+                    break;
+
+                case R.id.action_sort_num_moons_asc:
+                    Collections.sort(planetList, new Comparator<Planet>() {
+                        @Override
+                        public int compare(Planet lhs, Planet rhs) {
+                            Log.i( "PLANETS", "Sorting planets by number of moons (ASC)");
+                            if ( lhs.getNumberOfMoons() == rhs.getNumberOfMoons() ) {
+//                                return lhs.getName().compareTo( rhs.getName() );          // LAB
+                                return lhs.getName().compareToIgnoreCase( rhs.getName() );  // FINAL QUIZ
+                            } else {
+                                return lhs.getNumberOfMoons() - rhs.getNumberOfMoons();
+                            }
+                        }
+                    });
+                    break;
+            }
+            // remember which sort option the user picked
+            item.setChecked( true );
+            // re-fresh the list to show the sort order
+            ((ArrayAdapter)getListAdapter()).notifyDataSetChanged();
+        }
+
+        return true;
     }
 
     private void createPlanet(String uri) {

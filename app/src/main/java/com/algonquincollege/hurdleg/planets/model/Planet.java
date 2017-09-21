@@ -12,7 +12,7 @@ package com.algonquincollege.hurdleg.planets.model;
  *   distance from the Sun
  *   number of moons
  *
- * //TODO: compare this Java class to JSON object: https://planets-hurdleg.mybluemix.net/planets/2
+ * //TODO: compare this Java class to JSON object: https://planets.mybluemix.net/planets/2
  *
  * Pro-Tip: I used Android Studio IDE to generate the getters & setters. For details:
  *          Canvas > Modules > Resources > How to Generate Getters and Setters

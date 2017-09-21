@@ -5,15 +5,32 @@
         android:orderInCategory="100"
         android:showAsAction="always"/>
     <item android:id="@+id/action_post_data"
+        android:title="Create a new Building"
         android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="100"
+        android:orderInCategory="120"
         android:showAsAction="always"/>
     <item android:id="@+id/action_put_data"
+        android:title="Update a Building"
         android:icon="@android:drawable/ic_menu_edit"
-        android:orderInCategory="100"
+        android:orderInCategory="130"
         android:showAsAction="always"/>
     <item android:id="@+id/action_delete_data"
+        android:title="Delete a Building"
         android:icon="@android:drawable/ic_menu_delete"
-        android:orderInCategory="100"
+        android:orderInCategory="140"
         android:showAsAction="always"/>
+    <group android:id="@+id/sort_options" android:checkableBehavior="single">
+        <item android:id="@+id/action_sort_distance_asc"
+            android:title="Sort by Distance from Sun"
+            android:checked="true" />
+        <item android:id="@+id/action_sort_name_asc"
+            android:title="Sort by Name (a-z)"
+            android:checked="false" />
+        <item android:id="@+id/action_sort_name_dsc"
+            android:title="Sort by Name (z-a)"
+            android:checked="false" />
+        <item android:id="@+id/action_sort_num_moons_asc"
+            android:title="Sort by Number of Moons"
+            android:checked="false" />
+    </group>
 </menu>
