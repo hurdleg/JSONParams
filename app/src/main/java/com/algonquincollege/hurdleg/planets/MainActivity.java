@@ -131,8 +131,7 @@ public class MainActivity extends ListActivity {
                         @Override
                         public int compare(Planet lhs, Planet rhs) {
                             Log.i( "PLANETS", "Sorting planets by name (a-z)");
-//                            return lhs.getName().compareTo(rhs.getName());            //  LAB
-                            return lhs.getName().compareToIgnoreCase(rhs.getName());    // FINAL QUIZ
+                            return lhs.getName().compareTo(rhs.getName());            //  LAB
                         }
                     });
                     break;
@@ -142,8 +141,7 @@ public class MainActivity extends ListActivity {
                         @Override
                         public int compare(Planet lhs, Planet rhs) {
                             Log.i( "PLANETS", "Sorting planets by name (z-a)");
-//                            return lhs.getName().compareTo(rhs.getName());            // LAB
-                            return lhs.getName().compareToIgnoreCase(rhs.getName());    // FINAL QUIZ
+                            return lhs.getName().compareTo(rhs.getName());            // LAB
                         }
                     }));
                     break;
@@ -153,12 +151,8 @@ public class MainActivity extends ListActivity {
                         @Override
                         public int compare(Planet lhs, Planet rhs) {
                             Log.i( "PLANETS", "Sorting planets by number of moons (ASC)");
-                            if ( lhs.getNumberOfMoons() == rhs.getNumberOfMoons() ) {
-//                                return lhs.getName().compareTo( rhs.getName() );          // LAB
-                                return lhs.getName().compareToIgnoreCase( rhs.getName() );  // FINAL QUIZ
-                            } else {
-                                return lhs.getNumberOfMoons() - rhs.getNumberOfMoons();
-                            }
+                            //TODO: you write code for marks
+                            return 0;
                         }
                     });
                     break;
